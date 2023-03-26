@@ -9,12 +9,12 @@ function preload() {
 }
 function setup() {
   createCanvas(windowWidth, windowHeight).parent("p5");
-  txt = new Txt("H0T", 150, 600, 450, 0.07, serif);
-  txt2 = new Txt("mess", 950, 600, 450, 0.04, serif);
+  txt = new Txt("Hot", 150, 600, 450, 0.04, font);
+  txt2 = new Txt("mess", 1450, 600, 450, 0.07, serif);
 }
 
 function draw() {
-  background(255, 5);
+  background(255, 10);
   textSize(28);
   fill(0);
   xoff += 0.000011;
@@ -36,11 +36,7 @@ class Txt {
       // line(current.x + d(), current.y + d(), next.x + d(), next.y + d());
       stroke(255, noise(yoff * i) * 200, 0);
       noFill();
-      rect(
-        current.x - 5,
-        current.y - noise(xoff * i) * 20,
-        noise(xoff * i) * 30
-      );
+      rect(current.x - 5, current.y - 5, noise(xoff * i) * 60);
     }
   }
 }
