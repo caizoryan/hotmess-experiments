@@ -51,4 +51,6 @@ class Txt {
   }
 }
 
+function mousePressed() {}
+
 const d = () => random(-3, 3);
