@@ -1,13 +1,14 @@
 let font;
 let points = [];
-let txt;
+let txt, txt2;
 let xoff = 0;
 function preload() {
-  font = loadFont("./fonts/blunivered-Regular_web.woff");
+  font = loadFont("./fonts/Pantasia-Regular.woff");
 }
 function setup() {
   createCanvas(windowWidth, windowHeight).parent("p5");
-  txt = new Txt("Hotmess", 150, 600, 450, 0.04);
+  txt = new Txt("Hotmess", 150, 600, 450, 0.01);
+  txt2 = new Txt("h0TmEss", 150, 600, 450, 0.8);
 }
 
 function draw() {
@@ -16,6 +17,7 @@ function draw() {
   fill(0);
   xoff += 0.01;
   txt.update();
+  txt2.update();
 }
 
 class Txt {
@@ -24,16 +26,29 @@ class Txt {
   }
   update() {
     for (let i = 0; i < this.points.length; i++) {
-      stroke(255, 0, 0, 100);
+      stroke(255, 0, 0, 10);
       let current = this.points[i];
       let next = this.points[i + 1];
       if (i + 2 > this.points.length) break;
-      // line(current.x + d(), current.y + d(), next.x + d(), next.y + d());
-      stroke(255, 200, 0);
+      stroke(255, 0, 0);
+      strokeWeight(0.7);
       noFill();
-      rect(current.x - 5, current.y - 5, noise(xoff * i) * 40);
+      line(current.x + d(), current.y + d(), next.x + d(), next.y + d());
+      // bezier(
+      //   current.x + 10,
+      //   current.y + 10,
+      //   current.x,
+      //   current.y,
+      //   next.x + 10,
+      //   next.y + 10,
+      //   next.x,
+      //   next.y
+      // );
+      noStroke();
+      fill(255, 255, 0, 10);
+      rect(current.x - 20, current.y - 20, noise(xoff * i) * 40);
     }
   }
 }
 
-const d = () => random(-10, 10);
+const d = () => random(-3, 3);
